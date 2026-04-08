@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scaleble=no">
+
+    <title>Payment</title>
+    <link rel = "stylesheet" href = "buy.css">
+
+</head>
+<body>
+    <div class = 'wrapper'>
+        <br>
+        <div class = "logo">
+            <div class="profile"></div>
+            <div class="vvv"></div>
+        </div>
+        <div class='notif'> <p>Оформление заказа</p></div>
+
+        <div class ='order'>
+            <div class="ord_img"><img src="us.png"></div>
+            <div class="ord_inf">
+               <span id="display-amount">Загрузка...</span>
+                <span id="display-price">Загрузка...</span>
+                <span id="display-bonus">Загрузка...</span>
+            </div>        
+        </div>
+
+        <div class="pay">
+            <div class="bal"><img src='Rub.png'> <span id="b">Баланс</span></div>
+            <div class="cripto"><img src=''><span id='c'>Крипто валюта</span></div>
+        </div>
+
+
+
+
+
+
+
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const amountVal = params.get('amount');
+    const priceVal = params.get('price');
+    const bonusVal = params.get('bonus');
+    if (amountVal && priceVal) {
+        document.getElementById('display-amount').innerText = amountVal + ' US';
+        document.getElementById('display-price').innerText = priceVal + ' Рублей';
+        document.getElementById('display-bonus').innerText = 'Бонус за покупку ' + bonusVal;   
+    } else {
+        document.querySelector('.ord_inf').innerHTML = "Данные заказа не найдены";
+    }
+</script>
+
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<script>
+    if(window.Telegram && window.Telegram.WebApp){
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+
+    }
+</script>
+</body>
